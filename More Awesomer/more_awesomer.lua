@@ -136,29 +136,23 @@ SMODS.Joker {
 SMODS.Joker {
 	key = "blackmailed",
 	loc_txt = {
-		name = "Blackmail",
+		name = "Black Mail",
 		text = {
 			"{X:Mult,C:white} X#1# {} I am blackmailed.",
 			"{C:blue} #2# {} You are blackmailed.",
 			"{C:attention} #3# {} You cannot chat or",
 			"whisper when blackmailed.",
-			"THIS JOKER CODE HAS NOT BEEN FINISHED.",
+			"THIS JOKER CODE HAS NOT BEEN FINISHED",
 			"DO NOT BE SURPRISED IF THIS JOKER CRASHES YOUR GAME."
 			}
 		}
-	config = { extra = { Xmult = 4, idk = -2, hand_size = -1,  } },
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.chips } }
-	end,
+	config = { extra = { Xmult = 4, hand = -2, hand_size = -1, } },
 	rarity = 2,
 	atlas = "IAM",
 	pos = { x = 0, y = 0 },
 	cost = 8,
-	calculate = function(self, card, context)
-		if context.joker_main then
-			return {
-				Xmult_mod = card.ability.extra.Xmult, 
-			message = localize { type = "variable", key = "a_xmult", vars = { card.ability.extra.xmult } }
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.hand, card.ability.extra.handsize } }
 			}
 		end
 	end
